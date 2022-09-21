@@ -6,13 +6,9 @@ def Main():
     key = "CTFKIT{well done}"
     xMax = 1000
     yMax = 1000
-    process(filename, xMax, yMax, key)
+    Process(filename, xMax, yMax, key)
 
-def RandStr(n):
-    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
-    return ''.join(randlst)
-
-def process(filename, xMax, yMax, key):
+def Process(filename, xMax, yMax, key):
     f = open(filename, 'w')
     datalst = []
     x = random.randint(1, xMax)
@@ -26,6 +22,9 @@ def process(filename, xMax, yMax, key):
     f.writelines(datalst)
     f.close()
 
+def RandStr(n):
+    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
+    return ''.join(randlst)
 
 if __name__ == "__main__":
     Main()
