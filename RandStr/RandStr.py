@@ -2,11 +2,21 @@ import random
 import string
 
 def Main():
-    f = open('question.txt', 'w')
-    datalst = []
+    filename = "question.txt"
     key = "CTFKIT{well done}"
-    x = random.randint(1,1000)
-    y = random.randint(1,1000 - len(key))
+    xMax = 1000
+    yMax = 1000
+    process(filename, xMax, yMax, key)
+
+def RandStr(n):
+    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
+    return ''.join(randlst)
+
+def process(filename, xMax, yMax, key):
+    f = open(filename, 'w')
+    datalst = []
+    x = random.randint(1, xMax)
+    y = random.randint(1, yMax - len(key))
 
     for i in range(1000):
         if i == x:
@@ -16,9 +26,6 @@ def Main():
     f.writelines(datalst)
     f.close()
 
-def RandStr(n):
-    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
-    return ''.join(randlst)
 
 if __name__ == "__main__":
     Main()
